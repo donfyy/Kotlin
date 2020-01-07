@@ -1,5 +1,8 @@
 package com.donfyy.kotlin
 
+import java.awt.Point
+import java.awt.Rectangle
+
 fun main() {
     println("hi my first kotlin main!")
     println("z went away, the past has passed. let's do something interesting and valuable")
@@ -29,9 +32,23 @@ fun main() {
     println("is 1 in range [3, 5] ${isInRange(1, 3, 5)}")
     println("is 1 in range [2, 1] ${isInRange(1, 2, 1)}")
 
+    createInstance()
+
+//    var customer = Customer("a", "abc@bac.moc")
+//    customer.email = ""//Error:(38, 5) Kotlin: Val cannot be reassigned
+
 }
 
+//创建DTOs
+data class Customer(val name: String, val email: String)
 
+private fun createInstance() {
+    // 创建实例，没有new操作符
+    var rectangle = Rectangle(Point(3, 4))
+    var triple = Triple(1, 2, 3)
+}
+
+//区间操作符
 fun isInRange(target:Int, min:Int, max:Int) = target in min..max
 
 
