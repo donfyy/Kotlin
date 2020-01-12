@@ -10,6 +10,17 @@ fun main() {
 //    fun3(1)//编译错误：No value passed for parameter 'b'
 
 
+    fun4()
+}
+
+private fun fun4() {
+    listOf(1, 2, 3).forEach {
+        if (it == 3) return // ⾮局部直接返回到 foo() 的调⽤者
+//        这种非局部的返回只支持传递给内联函数的lambda表达式
+//        这不是坑人吗。。。卧槽
+    }
+
+    println("unreachable!")
 }
 
 fun fun1(a: Int) {
