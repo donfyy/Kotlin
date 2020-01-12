@@ -2,13 +2,14 @@ package com.donfyy.kotlin
 
 import java.awt.Point
 import java.awt.Rectangle
+import kotlin.math.absoluteValue
 
 fun main() {
     println("hi my first kotlin main!")
     println("z went away, the past has passed. let's do something interesting and valuable")
     val i = 1
     val j = 2
-    println("sum of i and j:" + (i  + j))
+    println("sum of i and j:" + (i + j))
     println("sum of i and j using function:" + sum(i, j))
 //    字符串模板模版模样
     println("max of $i and $j is :" + maxOf(i, j))
@@ -37,6 +38,30 @@ fun main() {
 //    var customer = Customer("a", "abc@bac.moc")
 //    customer.email = ""//Error:(38, 5) Kotlin: Val cannot be reassigned
 
+    withTest()
+
+}
+
+private fun withTest() {
+    val v: Int? = null
+
+    v?.let { aliasV ->
+        aliasV.dec()
+    }
+
+
+    with(v) {
+        this?.dec()
+        this?.absoluteValue
+    }
+
+    val wt = WithTest()
+
+    with(wt) {
+        //        this.v1 Cannot access 'v1': it is protected in 'WithTest'
+//        java：this指接收请求的对象，只能在class内使用
+//        kotlin：this依然指接受请求的对象，不限于在class内使用，还可以为空，不能访问class的私有成员？
+    }
 }
 
 //创建DTOs
@@ -49,11 +74,11 @@ private fun createInstance() {
 }
 
 //区间操作符
-fun isInRange(target:Int, min:Int, max:Int) = target in min..max
+fun isInRange(target: Int, min: Int, max: Int) = target in min..max
 
 
 //when表达式
-fun describe(obj: Any?):String =
+fun describe(obj: Any?): String =
     when (obj) {
         //a replacement and enhancement for keyword switch and if ? not switch ,
         //just a convenient approach for endless "if else".
@@ -79,27 +104,27 @@ private fun whileIterate() {
 
 //for循环
 private fun iterator() {
-    run{
+    run {
         val items = listOf("apple", "banana", "kiwifruit", "guava")
         for (item in items) {
             println(item)
         }
     }
 
-    run{
+    run {
         val items = listOf("apple", "banana", "kiwifruit", "guava")
         for (index in items.indices) {
             println("item at $index is ${items[index]}")
         }
     }
 
-    run{
-//        用lambda对集合迭代
+    run {
+        //        用lambda对集合迭代
         val items = listOf("apple", "banana", "kiwifruit", "guava")
         items.filter { it.startsWith("g") }
             .sortedBy { it }
             .map { it.toUpperCase() }
-            .forEach { println(it)}
+            .forEach { println(it) }
     }
 }
 
@@ -117,8 +142,9 @@ fun sum(i: Int, j: Int) = i + j
 
 //条件表达式
 fun maxOf(i: Int, j: Int) = if (i > j) i else j
+
 //类型检测与自动类型转换
-fun getStringLength(o : Any): Int? {
+fun getStringLength(o: Any): Int? {
     if (o is String) {
         return o.length
     }
@@ -126,3 +152,6 @@ fun getStringLength(o : Any): Int? {
     return null
 }
 
+object Singleton {
+    val name = "abc"
+}
