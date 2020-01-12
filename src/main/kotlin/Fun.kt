@@ -6,6 +6,8 @@ fun main() {
 //    fun1()//编译报错：Error:(6, 10) Kotlin: No value passed for parameter 'a'
 
     fun2()//no problem，此处省略了一个实参
+
+//    abc
 }
 
 fun fun1(a: Int) {
@@ -13,5 +15,9 @@ fun fun1(a: Int) {
 }
 
 fun fun2(a: Int = 1) {
+
+}
+
+fun fun3() {
 
 }
