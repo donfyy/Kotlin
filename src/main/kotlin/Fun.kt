@@ -11,16 +11,35 @@ fun main() {
 
 
     fun4()
+    fun5()
+    fun6()
 }
 
 private fun fun4() {
     listOf(1, 2, 3).forEach {
-        if (it == 3) return // ⾮局部直接返回到 foo() 的调⽤者
+        if (it == 3) return //从最直接包围lambda表达式的函数返回
+        // ⾮局部直接返回到 fun4() 的调⽤者
 //        这种非局部的返回只支持传递给内联函数的lambda表达式
 //        这不是坑人吗。。。卧槽
     }
 
     println("unreachable!")
+}
+
+private fun fun5() {
+    listOf(1, 2, 3).forEach l@{
+        if (it == 3) return@l // 从lambda表达式返回
+    }
+
+    println("fun5 reachable!")
+}
+
+private fun fun6() {
+    listOf(1, 2, 3).forEach {
+        if (it == 3) return@forEach // 从lambda表达式返回
+    }
+
+    println("fun6 reachable!")
 }
 
 fun fun1(a: Int) {
