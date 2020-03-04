@@ -38,8 +38,32 @@ class Derived(name: String, val lastName: String) : Base(name.capitalize().also 
     override val size: Int = (super.size + lastName.length).also { println("Initializing size in Derived :$it") }
 }
 
+open class Rectangle {
+    open fun draw() {
+        println("Drawing a rectangle")
+    }
+
+    val boarderColor: String get() = "black"
+}
+
+interface IA {
+
+}
+
+class FilledRectangle : Rectangle(), IA {
+    override fun draw() {
+        super.draw()
+
+        println("Filling the rectangle")
+    }
+
+    val fillColor: String get() = boarderColor
+}
+
 fun main() {
 //    Person("donfyy", true, "20200101")
 
-    Derived("donfyy", "z")
+//    Derived("donfyy", "z")
+
+    FilledRectangle().draw()
 }
