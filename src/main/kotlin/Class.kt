@@ -46,16 +46,24 @@ open class Rectangle {
     val boarderColor: String get() = "black"
 }
 
+interface Polygon {
+    fun draw() {}
+}
+
 interface IA {
 
 }
-
-class FilledRectangle : Rectangle(), IA {
+//一个类从它的直接超类继承自相同成员的多个实现，它必须覆盖这个成员并提供自己的实现
+class FilledRectangle : Rectangle(), IA, Polygon {
     override fun draw() {
-        super.draw()
-
-        println("Filling the rectangle")
+        super<Rectangle>.draw()
+//        draw方法必须重写
     }
+//    override fun draw() {
+//        super.draw()
+//
+//        println("Filling the rectangle")
+//    }
 
     val fillColor: String get() = boarderColor
 }
