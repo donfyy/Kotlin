@@ -47,7 +47,7 @@ open class Rectangle {
 }
 
 interface Polygon {
-    fun draw() {}
+    fun draw(){}
 }
 
 interface IA {
@@ -57,7 +57,7 @@ interface IA {
 class FilledRectangle : Rectangle(), IA, Polygon {
     override fun draw() {
         super<Rectangle>.draw()
-//        draw方法必须重写
+//        draw方法必须重写,必须是相同成员有多个实现。
     }
 //    override fun draw() {
 //        super.draw()
