@@ -92,10 +92,13 @@ object Singletona {
 //    companion object Singletonb {
 // 对象声明不能拥有伴生对象
 //    }
+    val value = B_CONST
 }
-
+const val B_CONST = 2
 class Companion {
+    val value = B_CONST
     companion object {
+        const val A_CONST = 1
 //        伴生对象是在对应类被加载时延迟初始化的
     }
 }
