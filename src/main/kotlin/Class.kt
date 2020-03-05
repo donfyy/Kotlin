@@ -47,12 +47,13 @@ open class Rectangle {
 }
 
 interface Polygon {
-    fun draw(){}
+    fun draw() {}
 }
 
 interface IA {
 
 }
+
 //一个类从它的直接超类继承自相同成员的多个实现，它必须覆盖这个成员并提供自己的实现
 class FilledRectangle : Rectangle(), IA, Polygon {
     override fun draw() {
@@ -66,6 +67,22 @@ class FilledRectangle : Rectangle(), IA, Polygon {
 //    }
 
     val fillColor: String get() = boarderColor
+}
+
+class C {
+    private fun fun1() = object {
+        val x: String = "x"
+    }
+
+    fun fun2() = object {
+        val x: String = "x"
+    }
+
+    fun fun3() {
+//        java 的方法会明确地指出返回值地类型，因此没有返回匿名对象的私有函数的返回类型是匿名对象类型一说
+        var x = fun1().x
+//        fun2().x
+    }
 }
 
 fun main() {
