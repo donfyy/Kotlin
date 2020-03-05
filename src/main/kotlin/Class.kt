@@ -83,6 +83,21 @@ class C {
         var x = fun1().x
 //        fun2().x
     }
+
+
+}
+object Singletona {
+//  对象声明是在第一次被访问时延迟初始化的
+
+//    companion object Singletonb {
+// 对象声明不能拥有伴生对象
+//    }
+}
+
+class Companion {
+    companion object {
+//        伴生对象是在对应类被加载时延迟初始化的
+    }
 }
 
 fun main() {
