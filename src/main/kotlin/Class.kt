@@ -50,10 +50,6 @@ interface Polygon {
     fun draw() {}
 }
 
-interface IA {
-
-}
-
 //一个类从它的直接超类继承自相同成员的多个实现，它必须覆盖这个成员并提供自己的实现
 class FilledRectangle : Rectangle(), IA, Polygon {
     override fun draw() {
@@ -86,21 +82,79 @@ class C {
 
 
 }
+
 object Singletona {
 //  对象声明是在第一次被访问时延迟初始化的
 
-//    companion object Singletonb {
+    //    companion object Singletonb {
 // 对象声明不能拥有伴生对象
 //    }
     val value = B_CONST
 }
+
 const val B_CONST = 2
+
 class Companion {
     val value = B_CONST
+
     companion object {
         const val A_CONST = 1
 //        伴生对象是在对应类被加载时延迟初始化的
     }
+}
+
+//结构,接口本质上是方法的集合，不拥有状态。
+//关系：一个接口可以继承自多个其他的接口，一个类可以实现多个接口
+interface IA {
+    val a: String//抽象的
+    val b: String
+        get() = "b"//或提供访问器的实现，不能有幕后字段
+
+    fun fun1()
+}
+
+interface IB {
+    fun fun1() {
+
+    }
+}
+interface IC {
+    fun fun1()
+}
+
+interface ID {
+    fun fun1()
+}
+
+class CB : IB, IC {
+    override fun fun1() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+}
+
+class CC : IB {
+
+}
+
+interface IID : IB, IC {
+    override fun fun1()
+}
+
+interface IIC : IC, ID {}
+
+class ClassIA : IA {
+     override var a: String = ""
+        get() = TODO("not implemented") //To change initializer of created properties use File | Settings | File Templates.
+        set(value) {field = value}
+
+    override val b: String
+        get() = super.b
+
+    override fun fun1() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
 }
 
 fun main() {
