@@ -65,6 +65,10 @@ class FilledRectangle : Rectangle(), IA, Polygon {
     val fillColor: String get() = boarderColor
     override val a: String
         get() = TODO("not implemented") //To change initializer of created properties use File | Settings | File Templates.
+
+    override fun fun1() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
 }
 
 class C {
