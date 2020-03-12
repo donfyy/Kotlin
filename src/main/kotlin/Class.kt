@@ -124,6 +124,7 @@ interface IB {
 
     }
 }
+
 interface IC {
     fun fun1()
 }
@@ -150,9 +151,11 @@ interface IID : IB, IC {
 interface IIC : IC, ID {}
 
 class ClassIA : IA {
-     override var a: String = ""
+    override var a: String = ""
         get() = TODO("not implemented") //To change initializer of created properties use File | Settings | File Templates.
-        set(value) {field = value}
+        set(value) {
+            field = value
+        }
 
     override val b: String
         get() = super.b
@@ -161,6 +164,21 @@ class ClassIA : IA {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
+}
+
+interface Comparable<in T> {
+    operator fun compareTo(other: T): Int
+}
+
+open class CA
+open class CCA : CA()
+open class CCCA : CCA()
+open class CCCB : CCA()
+
+fun demo(x: Comparable<CCA>) {
+    val y : Comparable<CCCA>  = x
+    var x1 : Comparable<CCCB> = x
+//    var x2 : Comparable<CA> = x //怎么理解？消费者可以消费CCA，自然可以消费CCA的子类型，但是不能消费CCA的超类型。从含义出发去理解。
 }
 
 fun main() {
