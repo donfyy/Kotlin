@@ -1,6 +1,6 @@
 package com.donfyy.java;
 
-public class Person {
+public class Person<T extends String> {
     private String name;
 
     private String firstProperty = createProperty(0);

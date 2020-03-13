@@ -166,7 +166,7 @@ class ClassIA : IA {
 
 }
 
-interface Comparable<in T> {
+interface Comparable<in T : CA> {
     operator fun compareTo(other: T): Int
 }
 
@@ -176,9 +176,20 @@ open class CCCA : CCA()
 open class CCCB : CCA()
 
 fun demo(x: Comparable<CCA>) {
-    val y : Comparable<CCCA>  = x
-    var x1 : Comparable<CCCB> = x
+    val y: Comparable<CCCA> = x
+    var x1: Comparable<CCCB> = x
 //    var x2 : Comparable<CA> = x //怎么理解？消费者可以消费CCA，自然可以消费CCA的子类型，但是不能消费CCA的超类型。从含义出发去理解。
+}
+
+inline class ICA(val s: String) {
+    var p1: String
+        get() {
+            return ""
+        }
+        set(v) {
+
+        }
+//类的数据可以被"内联"到类使用的地方,不存在实例？装箱拆箱的扩展应用,但是没有自动拆箱
 }
 
 fun main() {
@@ -187,4 +198,23 @@ fun main() {
 //    Derived("donfyy", "z")
 
     FilledRectangle().draw()
+    main_()
+}
+
+typealias NameTypeAlias = String
+
+inline class NameInlineClass(val s: String)
+
+fun acceptString(s: String) {}
+fun acceptNameTypeAlias(n: NameTypeAlias) {}
+fun acceptNameInlineClass(p: NameInlineClass) {}
+fun main_() {
+    val nameAlias: NameTypeAlias = ""
+    val nameInlineClass: NameInlineClass = NameInlineClass("")
+    val string: String = ""
+    acceptString(nameAlias) // 正确: 传递别名类型的实参替代函数中基础类型的形参
+    //acceptString(nameInlineClass) // 错误: 不能传递内联类的实参替代函数中基础类型的形参
+    // And vice versa:
+    acceptNameTypeAlias(string) // 正确: 传递基础类型的实参替代函数中别名类型的形参
+    // acceptNameInlineClass(string) // 错误: 不能传递基础类型的实参替代函数中内联类类型的形参 }
 }
