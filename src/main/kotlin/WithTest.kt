@@ -10,4 +10,12 @@ class WithTest {
     fun fun2() {
 
     }
+
+    companion object {
+
+    }
+
+/*    companion object A {
+        Error:(18, 5) Kotlin: Only one companion object is allowed per class
+    }*/
 }
