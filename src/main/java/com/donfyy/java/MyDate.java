@@ -23,7 +23,8 @@ public class MyDate {
             DateFormat dateInstance = DateFormat.getInstance();
             if (dateInstance instanceof SimpleDateFormat) {
                 ((SimpleDateFormat) dateInstance).applyPattern(inputPattern);
-                dateInstance.setTimeZone(TimeZone.getTimeZone("UTC"));
+//                dateInstance.setTimeZone(TimeZone.getTimeZone("UTC"));
+                dateInstance.setTimeZone(TimeZone.getTimeZone("America/New_York"));
                 desDate = dateInstance.parse(targetDateStr);
             }
 
@@ -46,9 +47,13 @@ public class MyDate {
 
     private static Calendar convertTimeToStartOfDay(long mills) {
         Calendar input = Calendar.getInstance();
+//        input.setTimeZone(TimeZone.getTimeZone("UTC"));
+        input.setTimeZone(TimeZone.getTimeZone("America/New_York"));
         input.setTimeInMillis(mills);
 
         Calendar output = Calendar.getInstance();
+        output.setTimeZone(TimeZone.getTimeZone("America/New_York"));
+//        output.setTimeZone(TimeZone.getTimeZone("UTC"));
         output.set(
                 input.get(Calendar.YEAR),
                 input.get(Calendar.MONTH),
@@ -60,7 +65,21 @@ public class MyDate {
     }
 
     public static void main(String... args) throws ParseException {
-        long mills = System.currentTimeMillis();
+        int count = getDayCountToToday("2020-09-03", "yyyy-MM-dd");
+        System.out.println(count);
+
+
+        long l = System.currentTimeMillis();
+        SimpleDateFormat local = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat utcLocal = new SimpleDateFormat("yyyy-MM-dd");
+        utcLocal.setTimeZone(TimeZone.getTimeZone("UTC"));
+        SimpleDateFormat usLocal = new SimpleDateFormat("yyyy-MM-dd");
+        usLocal.setTimeZone(TimeZone.getTimeZone("America/New_York"));
+
+        System.out.println(local.format(new Date(l)));
+        System.out.println(utcLocal.format(new Date(l)));
+        System.out.println(usLocal.format(new Date(l)));
+       /* long mills = System.currentTimeMillis();
         Calendar calendar = convertTimeToStartOfDay(mills);
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         SimpleDateFormat jpDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -88,7 +107,7 @@ public class MyDate {
         );
 
 
-        System.out.println(Objects.equals("", ""));
+        System.out.println(Objects.equals("", ""));*/
     }
 
 }
