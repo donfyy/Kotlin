@@ -1,5 +1,7 @@
 package com.donfyy.kotlin
-
+//class Student(var name: String, var age: String, var sex: String)
+//data class Student1(var name: String, var age: String, var sex: String)
+//加上data关键字编译器会生成toString和hashcode以及equals的实现
 class Person constructor(val name: String) {
     val firstProperty: String = "first property".also(::println)
 
