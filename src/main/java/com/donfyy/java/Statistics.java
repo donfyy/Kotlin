@@ -6,6 +6,7 @@ import java.util.Arrays;
 public class Statistics {
 
     public static void main(String... args) {
+//        new Person.StaticPerson()
         File x = new File("./test");
 
         BufferedReader bufferedReader = null;

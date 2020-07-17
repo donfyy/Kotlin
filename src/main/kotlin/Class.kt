@@ -1,5 +1,5 @@
 package com.donfyy.kotlin
-
+//类可以有一个主构造函数及一个或多个次构造函数
 class Person constructor(val name: String) {
     val firstProperty: String = "first property".also(::println)
 

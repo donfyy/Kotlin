@@ -10,8 +10,21 @@ public class ProxyTest {
             System.out.printf("A.m");
         }
     }
-
+    static final int hash(Object key) {
+        int h;
+        return key == null ? 0 : (h = key.hashCode()) ^ h >>> 16;
+    }
     public static void main(String... a) {
+        int v = -1;
+        System.out.println(v >> 1);
+        System.out.println(v >>> 1);
+        System.out.println(Integer.toBinaryString(v));
+        System.out.println(Integer.toBinaryString(v >> 1));
+        System.out.println(Integer.toBinaryString(v >>> 1));
+        System.out.println(Integer.toBinaryString(Integer.valueOf(v).hashCode()));
+
+        System.out.println(Integer.toBinaryString(hash(-1)));
+
         if (a.length != 0) {
             System.out.println("hhh");
         }
