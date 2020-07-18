@@ -54,3 +54,12 @@ fun fun2(a: Int = 1) {
 fun fun3(a: Int = 0, b: Int) {
 
 }
+
+fun fun7() {
+    var i = 1
+    fun fun8(){
+        i = 2
+    }
+    fun8()
+    println(i)
+}

@@ -11,6 +11,7 @@ fun main() {
     println(array[0])
 //    A().v1.is
     val arr = Array(2) { IntArray(3) }
+    val str = ""
     for (one in arr)
         for (two in one) {
             println(two)
