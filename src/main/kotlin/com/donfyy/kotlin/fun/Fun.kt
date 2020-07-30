@@ -76,3 +76,7 @@ fun fun7() {
 fun `1111`() {
     println("11111")
 }
+
+fun `name`() {
+    println("name fun with quote")
+}
