@@ -10,14 +10,21 @@ fun main() {
 //    fun3(1)//编译错误：No value passed for parameter 'b'
 
 
+    println("fun4------------------------------------------------")
     fun4()
+    println("fun5------------------------------------------------")
     fun5()
+    println("fun6------------------------------------------------")
     fun6()
+    println("fun`1111`------------------------------------------------")
+    `1111`()
+    println("end------------------------------------------------")
 }
 
 private fun fun4() {
-    listOf(1, 2, 3).forEach {
+    listOf(1, 2, 3, 4, 5).forEach {
         if (it == 3) return //从最直接包围lambda表达式的函数返回
+        println("it$it")
         // ⾮局部直接返回到 fun4() 的调⽤者
 //        这种非局部的返回只支持传递给内联函数的lambda表达式
 //        这不是坑人吗。。。卧槽
@@ -27,16 +34,18 @@ private fun fun4() {
 }
 
 private fun fun5() {
-    listOf(1, 2, 3).forEach l@{
+    listOf(1, 2, 3, 4, 5).forEach l@{
         if (it == 3) return@l // 从lambda表达式返回
+        println("it$it")
     }
 
     println("fun5 reachable!")
 }
 
 private fun fun6() {
-    listOf(1, 2, 3).forEach {
+    listOf(1, 2, 3, 4, 5).forEach {
         if (it == 3) return@forEach // 从lambda表达式返回
+        println("it$it")
     }
 
     println("fun6 reachable!")
@@ -62,4 +71,8 @@ fun fun7() {
     }
     fun8()
     println(i)
+}
+
+fun `1111`() {
+    println("11111")
 }

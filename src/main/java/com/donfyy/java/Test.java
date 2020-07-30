@@ -1,9 +1,5 @@
 package com.donfyy.java;
 
-import com.google.gson.FieldNamingPolicy;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-
 class Test {
     static final int MAXIMUM_CAPACITY = 1 << 30;
 
@@ -18,12 +14,6 @@ class Test {
         return (key == null) ? 0 : (h = key.hashCode()) ^ (h >>> 16);
     }
 
-    public static Gson provideGson() {
-        GsonBuilder gsonBuilder = new GsonBuilder();
-        gsonBuilder.setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES);
-        gsonBuilder.setLenient();
-        return gsonBuilder.create();
-    }
 
     static final int tableSizeFor(int cap) {
         int n = cap - 1;
