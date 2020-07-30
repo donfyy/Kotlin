@@ -1,4 +1,4 @@
-package com.donfyy.kotlin
+package com.donfyy.kotlin.`fun`
 
 fun main() {
     //    println(describe()) 若方法未提供参数的默认值，则掉用处不可以省略对应的实参
