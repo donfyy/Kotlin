@@ -1,6 +1,5 @@
 package com.donfyy.kotlin.p1
 
-import kotlin.reflect.jvm.internal.impl.renderer.KeywordStringsGenerated
 
 const val B_CONST = 1
 val constB = 1
