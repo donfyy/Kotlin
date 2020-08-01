@@ -1,4 +1,4 @@
-package main.kotlin.com.donfyy.kotlin.idioms
+package gettingstarted
 
 import java.util.*
 

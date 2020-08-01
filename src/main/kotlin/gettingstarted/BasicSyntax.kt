@@ -1,4 +1,4 @@
-package com.donfyy.kotlin.basic
+package gettingstarted
 
 
 fun main() {
