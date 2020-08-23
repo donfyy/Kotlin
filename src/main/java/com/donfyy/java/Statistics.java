@@ -1,11 +1,15 @@
 package com.donfyy.java;
 
-import java.io.*;
-import java.util.Arrays;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 
 public class Statistics {
 
     public static void main(String... args) {
+        String[] b = null;
+        Object[] a = b;
 //        new Person.StaticPerson()
         File x = new File("./test");
 
