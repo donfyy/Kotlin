@@ -65,6 +65,13 @@ class Unrelated(o: Outer) {
  * 要指定一个类的的主构造函数的可见性，使用以下语法（注意你需要添加一个显式 constructor 关键字）
  * 局部声明
  * 局部变量、函数和类不能有可见性修饰符。
+ *
+ * 模块
+ * 可见性修饰符 internal 意味着该成员只在相同模块内可见。更具体地说， 一个模块是编译在一起的一套 Kotlin 文件
+ * 1.一个 IntelliJ IDEA 模块
+ * 2.一个 Maven 项目
+ * 3.一个 Gradle 源集（例外是 test 源集可以访问 main 的 internal 声明）
+ * 4.一次 <kotlinc> Ant 任务执行所编译的一套文件
  */
 class C private constructor(a: Int) {  }
 fun main() {
